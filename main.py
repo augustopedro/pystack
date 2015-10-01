@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import tweepy, time
 from tweepy.error import TweepError
-from funny import funny_phrase_down, funny_phrase_up
+from funny import get_funny_phrase
 from collect import get_rates
  
 # OAuth process, using the keys and tokens (add you own keys)
@@ -12,18 +12,14 @@ auth.set_access_token(access_token, access_token_secret)
 # Creation of the actual interface, using authentication
 api = tweepy.API(auth)
 
-# historic of rates
-rates = [0]
-
-def update_status(funny_phrase):
+def update_status(rate, funny_phrase):
     u''' Update user's status on twitter, gets a funny phrase '''
     try:
-        api.update_status(status='Dólar tá '+get_rates()+' BRL. '+funny_phrase)
+        api.update_status(status='1 USD = {} BRL. {}'.format(rate, funny_phrase))
         print('Status updated')
 
     except TweepError, e:
         print('Duplicated status.')
-
 
 def main():
 
@@ -32,15 +28,8 @@ def main():
         # get rates
         rate = get_rates()
 
-        if rate == rates[-1]:
-            update_status('Nada mudou. Continuamos fodidos.')
-        if rate < rates[-1]:
-            update_status(funny_phrase_down())
-        else:
-            update_status(funny_phrase_up())
-
-        rates.append(rate)
-        print rates
+        # update status on twitter
+        update_status(rate, get_funny_phrase())
 
         # Waits for one minute
         time.sleep(60)
