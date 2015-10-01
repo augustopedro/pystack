@@ -4,6 +4,23 @@
 import random
 
 
+''''
+for using text as json
+import json
+
+tweets_data_path = './json/dilma.txt'
+
+tweets_data = []
+tweets_file = open(tweets_data_path, "r")
+for line in tweets_file:
+    try:
+        tweet = json.loads(line)
+        tweets_data.append(tweet)
+        print(json.dumps(tweet, indent=4))
+    except:
+        continue
+'''
+
 # list of phrases
 phrases = []
 
