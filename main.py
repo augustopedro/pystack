@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import tweepy, time
+from myconfig import *
 from tweepy.error import TweepError
 from funny import get_funny_phrase
 from collect import get_rates

@@ -2,6 +2,7 @@ import json
 import urllib2
 from lxml import html
 import requests
+from urllib2 import urlopen
 
 def collect_funny_phrases(link='http://www.brainyquote.com/quotes/topics/topic_finance.html'):
     u'''verificar a existencia de espaco em branco no arquivo na hora de realizar a leitura
