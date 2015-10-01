@@ -3,7 +3,6 @@
 
 import random
 
-
 ''''
 for using text as json
 import json
@@ -22,11 +21,11 @@ for line in tweets_file:
 '''
 
 
-
 '''
 Sortear frases de forma unica. Verificar tamanho da lista e sortear unicamente
 cada uma das frases. 
 '''
+
 # list of phrases
 phrases_pt = []
 
@@ -45,9 +44,37 @@ with open('funny_en.txt', 'r') as myfile:
 
 
 def get_funny_phrase_pt():
-    u''' Get one funny funny_phrase from the list of funny_phrases'''
-    return phrases_pt.pop()
+    u''' Get one funny funny_phrase from the list of funny_phrases
+         Gets only phrases up to 140 characters'''
+    
+    # Still have some phrases in the database
+    if len(phrases_pt) > 0:
+
+        phrase = phrases_pt.pop()
+        while len(phrase) > 140:
+            phrase = phrases_pt.pop()
+
+        return phrase
+
+    else:
+        return None
 
 def get_funny_phrase_en():
-    u''' Get one funny funny_phrase from the list of funny_phrases'''
-    return phrases_en.pop()
+    u''' Get one funny funny_phrase from the list of funny_phrases
+         Gets only phrases up to 140 characters'''
+
+    # Still have some phrases in the database
+    if len(phrases_en) > 0:
+
+        phrase = phrases_en.pop()
+        while len(phrase) > 140:
+            phrase = phrases_en.pop()
+
+        return phrase
+
+    else:
+        return None
+
+
+
+
