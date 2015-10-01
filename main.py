@@ -4,7 +4,7 @@ import tweepy, time
 from tweepy.error import TweepError
 from funny import get_funny_phrase
 from collect import get_rates
- 
+
 # OAuth process, using the keys and tokens (add you own keys)
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -14,6 +14,7 @@ api = tweepy.API(auth)
 
 def update_status(rate, funny_phrase):
     u''' Update user's status on twitter, gets a funny phrase '''
+
     try:
         api.update_status(status='1 USD = {} BRL. {}'.format(rate, funny_phrase))
         print('Status updated')
@@ -22,6 +23,7 @@ def update_status(rate, funny_phrase):
         print('Duplicated status.')
 
 def main():
+    u''' Main function '''
 
     while True: 
         

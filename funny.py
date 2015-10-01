@@ -25,7 +25,7 @@ for line in tweets_file:
 phrases = []
 
 # read phrases from file
-with open('funny.txt', 'r') as myfile:
+with open('funny_pt.txt', 'r') as myfile:
     for line in myfile:
         phrases.append(line)
 
