@@ -45,13 +45,13 @@ with open('funny_en.txt', 'r') as myfile:
 
 def get_funny_phrase_pt():
     u''' Get one funny funny_phrase from the list of funny_phrases
-         Gets only phrases up to 140 characters'''
+         Gets only phrases up to 120 characters'''
     
     # Still have some phrases in the database
     if len(phrases_pt) > 0:
 
         phrase = phrases_pt.pop()
-        while len(phrase) > 140:
+        while len(phrase) > 120:
             phrase = phrases_pt.pop()
 
         return phrase
@@ -61,13 +61,13 @@ def get_funny_phrase_pt():
 
 def get_funny_phrase_en():
     u''' Get one funny funny_phrase from the list of funny_phrases
-         Gets only phrases up to 140 characters'''
+         Gets only phrases up to 120 characters'''
 
     # Still have some phrases in the database
     if len(phrases_en) > 0:
 
         phrase = phrases_en.pop()
-        while len(phrase) > 140:
+        while len(phrase) > 120:
             phrase = phrases_en.pop()
 
         return phrase

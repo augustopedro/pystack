@@ -13,7 +13,7 @@ TODO
 Coletar mais frases de forma dinamica (tweets?)
 '''
 
-def collect_funny_phrases(link='http://www.brainyquote.com/quotes/topics/topic_finance.html'):
+def collect_funny_phrases(link):
     u'''verificar a existencia de espaco em branco no arquivo na hora de realizar a leitura
     fazer paginacao em outras paginas para pegar mais arquivos
     limitar o get de mensagens para mensagens menores que 140 caracteres
@@ -38,11 +38,15 @@ def collect_funny_phrases(link='http://www.brainyquote.com/quotes/topics/topic_f
 
     with open('funny_en.txt', 'a') as myfile:
         for post in posts:
-            myfile.write('\n'+post)
+            if len(post) <= 120:
+                myfile.write(post+'\n')
+
+def function():
+    pass
 
 
 def collect_rates():
-    u'''Get the rates at the yahoo server using YQL'''
+    u'''Get the dolar rates at the yahoo server using YQL'''
 
     # Query of search
     query = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20(%22USDBRL%22%2C%22EURBRL%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
@@ -53,5 +57,9 @@ def collect_rates():
     # returns the dolar rate converted to BRL
     return str(data['query']['results']['rate'][0]['Bid'])
 
-
+for i in range (13):
+    if i == 0:
+        collect_funny_phrases('http://www.brainyquote.com/quotes/topics/topic_finance.html')
+    else:
+        collect_funny_phrases('http://www.brainyquote.com/quotes/topics/topic_finance'+str(i)+'.html')
 
