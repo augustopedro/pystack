@@ -17,10 +17,11 @@ api = tweepy.API(auth)
 
 def update_status(status):
     u''' Update user's status on twitter'''
-    print len(status)
-    api.update_status(status=status)
-    print('Status updated.')
+    #api.update_status(status=status)
+    print('Status updated: {}]\n{} char\n'.format( status, len(status)))
 
+
+rates = [x/10 for x in range(39, 40, 45)]
 
 def main():
     u''' Main function '''
@@ -28,7 +29,8 @@ def main():
     while True: 
         
         # get rates
-        rate = collect_rates()
+        #rate = collect_rates()
+        rate = choice(rates)
 
         # random pickups of phrases in english and pt
         mychoice = choice(['pt', 'en'])
@@ -40,7 +42,7 @@ def main():
             update_status('1 USD = {} BRL. {}'.format(rate, get_funny_phrase_pt()))
 
         # Waits for five minute
-        time.sleep(60*5)
+        time.sleep(0.2)
 
 
 if __name__ == '__main__':
