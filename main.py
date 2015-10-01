@@ -3,7 +3,7 @@
 import tweepy, time
 from myconfig import *
 from tweepy.error import TweepError
-from funny import get_funny_phrase
+from funny import get_funny_phrase_pt, get_funny_phrase_en
 from collect import get_rates
 
 # OAuth process, using the keys and tokens (add you own keys)
@@ -28,14 +28,15 @@ def main():
 
     while True: 
         
+        print get_funny_phrase_en()
         # get rates
-        rate = get_rates()
+        #rate = get_rates()
 
         # update status on twitter
-        update_status(rate, get_funny_phrase())
+        #update_status(rate, get_funny_phrase())
 
         # Waits for one minute
-        time.sleep(60)
+        #time.sleep(60)
 
 
 if __name__ == '__main__':

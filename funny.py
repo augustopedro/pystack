@@ -21,15 +21,33 @@ for line in tweets_file:
         continue
 '''
 
+
+
+'''
+Sortear frases de forma unica. Verificar tamanho da lista e sortear unicamente
+cada uma das frases. 
+'''
 # list of phrases
-phrases = []
+phrases_pt = []
 
 # read phrases from file
 with open('funny_pt.txt', 'r') as myfile:
     for line in myfile:
-        phrases.append(line)
+        phrases_pt.append(line)
+
+# list of phrases
+phrases_en = []
+
+# read phrases from file
+with open('funny_en.txt', 'r') as myfile:
+    for line in myfile:
+        phrases_en.append(line)
 
 
-def get_funny_phrase():
+def get_funny_phrase_pt():
     u''' Get one funny funny_phrase from the list of funny_phrases'''
-    return phrases.pop()
+    return phrases_pt.pop()
+
+def get_funny_phrase_en():
+    u''' Get one funny funny_phrase from the list of funny_phrases'''
+    return phrases_en.pop()

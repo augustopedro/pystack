@@ -4,6 +4,12 @@ from lxml import html
 import requests
 from urllib2 import urlopen
 
+
+'''
+TODO
+Coletar mais frases de forma dinamica (tweets?)
+'''
+
 def collect_funny_phrases(link='http://www.brainyquote.com/quotes/topics/topic_finance.html'):
     u'''verificar a existencia de espaco em branco no arquivo na hora de realizar a leitura
     fazer paginacao em outras paginas para pegar mais arquivos
@@ -29,6 +35,7 @@ def collect_funny_phrases(link='http://www.brainyquote.com/quotes/topics/topic_f
     with open('funny_en.txt', 'a') as myfile:
         for post in posts:
             myfile.write('\n'+post)
+
 
 def get_rates():
     u'''Get the dolar rates at the yahoo server using YQL'''
