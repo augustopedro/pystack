@@ -18,7 +18,7 @@ api = tweepy.API(auth)
 def update_status(status):
     u''' Update user's status on twitter'''
     #api.update_status(status=status)
-    print('Status updated: {}\n{} char\n'.format(status, len(status)))
+    print('Status updated: {}{} char\n'.format(status, len(status)))
 
 
 rates = [x/10 for x in range(39, 40, 45)]
@@ -33,7 +33,7 @@ def main():
         rate = choice(rates)
 
         # random pickups of phrases in english and pt
-        mychoice = choice(['pt', 'en'])
+        mychoice = choice(['en'])
 
         # choose between pt and eng and updates it
         if mychoice == 'en':

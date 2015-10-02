@@ -57,9 +57,11 @@ def collect_rates():
     # returns the dolar rate converted to BRL
     return str(data['query']['results']['rate'][0]['Bid'])
 
+'''
 for i in range (13):
     if i == 0:
         collect_funny_phrases('http://www.brainyquote.com/quotes/topics/topic_finance.html')
     else:
         collect_funny_phrases('http://www.brainyquote.com/quotes/topics/topic_finance'+str(i)+'.html')
+'''
 
