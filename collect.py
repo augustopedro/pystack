@@ -7,10 +7,10 @@ from lxml import html
 import requests
 from urllib2 import urlopen
 
-
 '''
 TODO
 Coletar mais frases de forma dinamica (tweets?)
+Salvar cotação do dolar em arquivo separado com timestamp
 '''
 
 def collect_funny_phrases(link):
@@ -54,8 +54,31 @@ def collect_rates():
     # get currency from yahoo
     data = json.load(urlopen(query))
 
+    # get rate
+    cotation = str(data['query']['results']['rate'][0]['Bid'])
+    timestamp = str(data['query']['created'])
+
+    data = (timestamp,cotation)
+
+    with open('cotation.txt', 'a') as myfile:
+        myfile.write(str(data)+'\n')
+
     # returns the dolar rate converted to BRL
-    return str(data['query']['results']['rate'][0]['Bid'])
+    return cotation
+
+def up_down():
+    cotations = []
+    with open('cotation.txt', 'a') as myfile:
+        for line in myfile:
+            if len(line) > 0:
+                cotations.append(line)
+
+    if cotations[-1] > cotations[-2]:
+        return True
+    else:
+        return False
+
+
 
 '''
 for i in range (13):

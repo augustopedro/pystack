@@ -5,7 +5,7 @@ import tweepy, time
 from myconfig import *
 from tweepy.error import TweepError
 from funny import get_funny_phrase_pt, get_funny_phrase_en
-from collect import collect_rates
+from collect import collect_rates, up_down
 from random import choice
 
 # OAuth process, using the keys and tokens (add you own keys to a 'myconfig.py file')
@@ -17,7 +17,7 @@ api = tweepy.API(auth)
 
 def update_status(status):
     u''' Update user's status on twitter'''
-    #api.update_status(status=status)
+    api.update_status(status=status)
     print('Status updated: {}{} char\n'.format(status, len(status)))
 
 
@@ -29,20 +29,19 @@ def main():
     while True: 
         
         # get rates
-        #rate = collect_rates()
-        rate = choice(rates)
+        rate = collect_rates()
+        #rate = choice(rates)
 
         # random pickups of phrases in english and pt
         mychoice = choice(['en'])
 
-        # choose between pt and eng and updates it
-        if mychoice == 'en':
-            update_status('1 USD = {} BRL. {}'.format(rate, get_funny_phrase_en()))        
-        elif mychoice == 'pt':
-            update_status('1 USD = {} BRL. {}'.format(rate, get_funny_phrase_pt()))
+        if up_down == True:
+            update_status('1 USD = R${} (↑). {}'.format(rate, get_funny_phrase_en()))  
+        else:
+            update_status('1 USD = R${} (↓). {}'.format(rate, get_funny_phrase_en()))  
 
-        # Waits for five minute
-        time.sleep(0.2)
+        # Waits for one hour
+        time.sleep(60*60)
 
 
 if __name__ == '__main__':
