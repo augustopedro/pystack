@@ -66,14 +66,13 @@ def collect_rates():
     # returns the dolar rate converted to BRL
     return cotation
 
-def up_down():
+def up_down(atual):
     cotations = []
-    with open('cotation.txt', 'a') as myfile:
+    with open('cotation.txt', 'r') as myfile:
         for line in myfile:
             if len(line) > 0:
                 cotations.append(line)
-
-    if cotations[-1] > cotations[-2]:
+    if cotations[-1] > atual:
         return True
     else:
         return False

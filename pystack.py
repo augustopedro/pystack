@@ -33,12 +33,12 @@ def main():
         #rate = choice(rates)
 
         # random pickups of phrases in english and pt
-        mychoice = choice(['en'])
+        #mychoice = choice(['en'])
 
-        if up_down == True:
-            update_status('1 USD = R${} (↑). {}'.format(rate, get_funny_phrase_en()))  
+        if up_down(rate) == True:
+            update_status('1 USD = R${} (↑). {}'.format(rate,' subiu!'))
         else:
-            update_status('1 USD = R${} (↓). {}'.format(rate, get_funny_phrase_en()))  
+            update_status('1 USD = R${} (↓). {}'.format(rate,' caiu!'))
 
         # Waits for one hour
         time.sleep(60*60)
